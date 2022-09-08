@@ -24,7 +24,8 @@ library(viridis)
 ggplot(data = midwest, mapping = aes(x = popdensity)) +
   geom_histogram(binwidth = 10000)
 ```
-The data is greatly skewed to the right. There appears to be outliers between 50000 and 75000 as well as after 75000. 
+
+The data is greatly skewed to the right. There appears to be outliers between 50000 and 75000 as well as after 75000.
 
 ## Exercise 2
 
@@ -36,11 +37,22 @@ ggplot(data = midwest, mapping = aes(x = percollege, y = percbelowpoverty, color
 
 ## Exercise 3
 
-(Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+There is a large clump of states around 10-25% of people with a collge degree and below poverty. There is a substanial outlier from the state of Wyoming. This outlier falls in the 0-10% of people with a college degree but also in the 50% of people living below poverty. ???
 
 ## Exercise 4
 
+```{r ex-4}
+ggplot(data = midwest, mapping = aes(x = percollege, y = percbelowpoverty, color = state)) +  
+     geom_smooth(se = FALSE) 
+```
+
+Which plot do you prefer - this plot or the plot in Ex 2? Briefly explain your choice.
+
+I prefer this plot because it is easier to read.
+
 ## Exercise 5
+
+
 
 ## Exercise 6
 
