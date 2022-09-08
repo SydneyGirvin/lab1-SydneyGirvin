@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Data visualization"
-author: "[INSERT NAME]"
+author: "Sydney Girvin"
 format: pdf
 editor: visual
 ---
@@ -12,15 +12,27 @@ editor: visual
 #| message: false
 
 library(tidyverse)
+
+library(viridis)
 ```
 
 ## Exercise 1
 
 (Type your answer to Exercise 1 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
 
+```{r ex-1}
+ggplot(data = midwest, mapping = aes(x = popdensity)) +
+  geom_histogram(binwidth = 10000)
+```
+The data is greatly skewed to the right. There appears to be outliers between 50000 and 75000 as well as after 75000. 
+
 ## Exercise 2
 
-(Type your answer to Exercise 2 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+```{r ex-2}
+ggplot(data = midwest, mapping = aes(x = percollege, y = percbelowpoverty, color = state)) +  
+     geom_point() +
+        scale_color_viridis_d()
+```
 
 ## Exercise 3
 
@@ -28,11 +40,8 @@ library(tidyverse)
 
 ## Exercise 4
 
-
 ## Exercise 5
 
-
 ## Exercise 6
-
 
 ## Exercise 7
