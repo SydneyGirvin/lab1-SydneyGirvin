@@ -37,23 +37,49 @@ ggplot(data = midwest, mapping = aes(x = percollege, y = percbelowpoverty, color
 
 ## Exercise 3
 
-There is a large clump of states around 10-25% of people with a collge degree and below poverty. There is a substanial outlier from the state of Wyoming. This outlier falls in the 0-10% of people with a college degree but also in the 50% of people living below poverty. ???
+There is a large clump of states in this graph making it hard to interpret. It seems that Ohio has a large amount of people living below the poverty line and not a lot of people with college degrees. For Illinois, it seems like more people have college degrees due to the purple dots off to the right side of the graph.
 
 ## Exercise 4
 
 ```{r ex-4}
 ggplot(data = midwest, mapping = aes(x = percollege, y = percbelowpoverty, color = state)) +  
-     geom_smooth(se = FALSE) 
+     geom_smooth(se = FALSE) +
+  labs(x = "% of people with college degree", 
+       y = "% of people living below poverty",
+       title = "Relationship Between College Degrees and Poverty by State",
+       color = "State")
 ```
 
-Which plot do you prefer - this plot or the plot in Ex 2? Briefly explain your choice.
-
-I prefer this plot because it is easier to read.
+I prefer this plot from exercise 4 because it is easier to read. It is easier to see the trends here by dragging a finger and mapping what is on the X axis to what is on the Y axis.
 
 ## Exercise 5
 
+```{r ex-5}
+ggplot(data = midwest, mapping = aes(x = area,color = state)) + 
+  geom_boxplot()
+```
 
+Wisconsin's median is larger than the other states. The red and purple one have the most variability, they are the most spread out.
+
+-   Which state has the single largest county? How do you know based on the plot?
 
 ## Exercise 6
 
+```{r ex-6}
+midwest <- midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No"))
+     ggplot(midwest, 
+       aes(x = state, fill = metro)) +
+           geom_bar(position = "fill") +
+           labs(title = "state vs percentage in metro area", x = "State", y = "Percentage in metro area")
+```
+
 ## Exercise 7
+
+```{r ex-7}
+ggplot(midwest, aes(x= percollege, y = popdensity, color= percbelowpoverty)) + 
+  geom_point(alpha = .5) +
+  facet_wrap(~state) +
+  labs(title = "College Degree vs Population Density", x = "% College Educated" , y = "Population Density", color = "% Below Poverty Line") + 
+  theme_minimal()
+```
